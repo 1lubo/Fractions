@@ -32,17 +32,27 @@ class Fraction:
         print(self.num,"/",self.den)
 
     def __add__(self,otherfraction): #overload addition
-        newnum = self.num*otherfraction.den + \
-                      self.den*otherfraction.num
+        newnum = self.num * otherfraction.den + self.den * otherfraction.num
         newden = self.den * otherfraction.den        
         return Fraction(newnum, newden)
-        
 
-    def __eq__(self, other): #overload equality
-        firstnum = self.num * other.den
-        secondnum = other.num * self.den
+    def __sub__(self, otherfraction): #overload subtraction
+        if self.den == otherfraction.den:
+            return Fraction(self.num - otherfraction.num, self.den)
+        else:
+            return Fraction((self.num * otherfraction.den)-(self.den * otherfraction.num), self.den * otherfraction.den)
+
+
+    def __eq__(self, otherfraction): #overload equality
+        firstnum = self.num * otherfraction.den
+        secondnum = otherfraction.num * self.den
 
         return firstnum == secondnum
+
+    def __ne__(self, otherfraction):
+        firstnum = self.num * otherfraction.den
+        secondnum = otherfraction.num * self.den
+        return firstnum != secondnum
     
     def __mul__(self, otherfraction): #overload multiplication
         newnum = self.num * otherfraction.num
@@ -68,6 +78,9 @@ class Fraction:
             newmenum = self.num * (leastcommon/self.den)
             newohternum = otherfraction.num * (leastcommon/otherfraction.den)
             return newmenum < newohternum
+
+    def __le__(self, otherfraction): #overload ordering (less than or equal)
+        return self < otherfraction or self == otherfraction
         
     def __gt__(self, otherfraction): #overload ordering (greater than)
         if self.den == otherfraction.den:
@@ -77,6 +90,9 @@ class Fraction:
             newmenum = self.num * (leastcommon/self.den)
             newohternum = otherfraction.num * (leastcommon/otherfraction.den)
             return newmenum > newohternum
+
+    def __ge__(self, otherfraction): #overload ordering (greater than or equal)
+        return self > otherfraction or self == otherfraction
 
     def getNum(self): #get numerator
         return self.num
@@ -96,7 +112,7 @@ print(x > y)
 print(x.getNum())
 print(x.getDen())
 """        
-t = Fraction(15, 105)
-u = Fraction(3, 7)
-print(t+u)
+t = Fraction(1, 5)
+u = Fraction(6, 7)
+print(t!=u)
 
