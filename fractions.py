@@ -103,19 +103,4 @@ class Fraction:
     def getDen(self): #get denominator
         return self.den
 
-"""
-x = Fraction(1,2)
-y = Fraction(2,5)
-print(x+y)
-print(x == y)
-print(x*y)
-print(x/y)
-print(x < y)
-print(x > y)
-print(x.getNum())
-print(x.getDen())
-"""        
-t = Fraction(1.2, 5)
-u = Fraction(6, 7)
-print(t!=u)
 
