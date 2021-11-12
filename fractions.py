@@ -21,6 +21,9 @@ def lcm(m, n): #finding the least common multiple
     
 class Fraction:
     def __init__(self,top,bottom):
+        if not isinstance(top, int) or not isinstance(bottom, int):
+            raise ValueError('The numerator and denominator have to be integers')
+
         gr_com_den = gcd(top, bottom)
         self.num = top // gr_com_den
         self.den = bottom // gr_com_den
@@ -112,7 +115,7 @@ print(x > y)
 print(x.getNum())
 print(x.getDen())
 """        
-t = Fraction(1, 5)
+t = Fraction(1.2, 5)
 u = Fraction(6, 7)
 print(t!=u)
 
