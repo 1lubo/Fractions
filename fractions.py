@@ -21,8 +21,9 @@ def lcm(m, n): #finding the least common multiple
     
 class Fraction:
     def __init__(self,top,bottom):
-        self.num = top
-        self.den = bottom
+        gr_com_den = gcd(top, bottom)
+        self.num = top // gr_com_den
+        self.den = bottom // gr_com_den
 
     def __str__(self):
         return str(self.num)+"/"+str(self.den)
@@ -33,9 +34,9 @@ class Fraction:
     def __add__(self,otherfraction): #overload addition
         newnum = self.num*otherfraction.den + \
                       self.den*otherfraction.num
-        newden = self.den * otherfraction.den
-        common = gcd(newnum,newden)
-        return Fraction(newnum//common,newden//common)
+        newden = self.den * otherfraction.den        
+        return Fraction(newnum, newden)
+        
 
     def __eq__(self, other): #overload equality
         firstnum = self.num * other.den
@@ -82,7 +83,8 @@ class Fraction:
 
     def getDen(self): #get denominator
         return self.den
-        
+
+"""
 x = Fraction(1,2)
 y = Fraction(2,5)
 print(x+y)
@@ -93,6 +95,8 @@ print(x < y)
 print(x > y)
 print(x.getNum())
 print(x.getDen())
-
-
+"""        
+t = Fraction(15, 105)
+u = Fraction(3, 7)
+print(t+u)
 
